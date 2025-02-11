@@ -6,7 +6,7 @@ from main import rate_url_validity
 user_query = "What are the latest advancements in artificial intelligence and machine learning?"
 url_to_check = "https://www.evonence.com/blog/top-5-breakthroughs-in-ai-and-machine-learning-for-2024"
 
-# Step 2: Call the credibility evaluation function with the URL
+# Step 2: Call the rate_url_validity function to evaluate the credibility of the URL
 result = rate_url_validity(user_query, url_to_check)
 
 # Step 3: Display the evaluation result
