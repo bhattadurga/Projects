@@ -1,6 +1,6 @@
 ###### run.py file ########
 # Import the rate_url_validity function from the credibility_score module
-from project1 import rate_url_validity
+from main import rate_url_validity
 
 # Step 1: Define the user prompt and the URL to check
 user_query = "What are the latest advancements in artificial intelligence and machine learning?"
