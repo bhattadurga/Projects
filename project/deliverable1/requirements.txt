@@ -1,1 +1,8 @@
-a
+#### requirements.txt ####
+# Install the required Python libraries
+requests              # For making HTTP requests to fetch web pages
+beautifulsoup4        # For parsing HTML content
+sentence-transformers # For semantic text similarity using pre-trained transformer models
+transformers          # For using transformer models for tasks like sentiment analysis
+spacy                 # For advanced natural language processing (NLP)
+textblob              # For basic text processing and sentiment analysis
