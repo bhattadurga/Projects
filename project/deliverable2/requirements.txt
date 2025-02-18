@@ -1,4 +1,8 @@
-import requests
-from bs4 import BeautifulSoup
-from sentence_transformers import SentenceTransformer, util
-from transformers import pipeline
+requests  # For making HTTP requests to retrieve data from web pages or APIs
+beautifulsoup4  # For parsing HTML and XML documents, often used for web scraping
+transformers  # Provides pre-trained models and pipelines for Natural Language Processing (NLP)
+sentence-transformers  # For sentence embeddings, enabling semantic search and text similarity
+google-api-python-client  # For interacting with Google APIs like Gmail, Google Sheets, etc.
+scikit-learn  # A machine learning library for Python, useful for building models and preprocessing data
+numpy  # A fundamental package for numerical computing, providing support for arrays and matrices
+pandas  # For data manipulation and analysis, especially with tabular data (like CSV or Excel files)
