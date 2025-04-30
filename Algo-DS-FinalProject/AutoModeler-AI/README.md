@@ -20,7 +20,34 @@ It supports dynamic model selection between regression and classification tasks,
 - **Visualization**: Matplotlib, Seaborn
 - **Model Persistence**: joblib
 
-**Deployment (Bonus):** AWS Lambda + API Gateway
+**Design Diagram**
+           ┌────────────────────┐
+           │   🧑 User Uploads  │
+           │   CSV & Describes │
+           └────────┬──────────┘
+                    ↓
+         ┌────────────────────┐
+         │ Streamlit Frontend │   ← UI, data input, task chat, output display
+         └────────┬───────────┘
+                  ↓
+     JSON Payload via REST API (POST /train_model)
+                  ↓
+         ┌────────────────────┐
+         │  FastAPI Backend   │   ← API endpoints, request handling
+         └────────┬───────────┘
+                  ↓
+         ┌────────────────────┐
+         │    trainer.py      │   ← Feature engineering, model training (regression/classification)
+         └────────┬───────────┘
+                  ↓
+         ┌────────────────────┐
+         │     judge.py       │   ← Model evaluation logic (R², Accuracy, Adjusted R², p-values)
+         └────────┬───────────┘
+                  ↓
+         ┌────────────────────┐
+         │   Model (.pkl)     │   ← Saved model with joblib
+         └────────────────────┘
+
 
 ## Installation
 ## Prerequisites
