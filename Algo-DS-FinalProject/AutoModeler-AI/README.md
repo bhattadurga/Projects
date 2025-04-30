@@ -89,7 +89,6 @@ AutoModeler-AI/
 │── trainer.py              # Model training logic
 │── judge.py                # Model judging logic
 │── plot_utils.py           # Feature importance plotting
-│── utils/                  # (optional helpers)
 │── requirements.txt        # Required dependencies
 │── saved_model.pkl         # Generated after training
 │── README.md               # Project documentation
