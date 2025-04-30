@@ -71,11 +71,13 @@ enable_ai_judge = st.checkbox("Enable AI Judge", value=True)
 **Scenario 1 (Regression):**
 1.User: “I want to predict housing prices.”
 AutoModeler: “That sounds like a continuous variable. Would you like to use linear regression?”
+User: Yes,Use linear regression
 → Backend trains a linear regression model and returns R² and coefficients.
 
 **Scenario 2 (Classification):**
-2.User: “I want to classify housing prices into 'low', 'medium', 'high'.”
-AutoModeler: “Great, I’ll bin the target variable and apply logistic regression. Shall we proceed?”
+2.User: “I want to make a prediction of housing price using logistic regression model”
+AutoModeler: “Would you like me to bin the prices and use logistic regression, or switch to linear regression?”
+User: bin the prices and use logistic regression
 → Backend bins the target and trains logistic regression, returning a confusion matrix and accuracy.
 
 ## Code Structure
