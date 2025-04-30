@@ -4,7 +4,7 @@ import requests
 from io import StringIO
 import pickle
 import matplotlib.pyplot as plt
-from plot_utils import plot_feature_importance
+from plot_utils import plot_feature_importance, plot_logistic_coefficients
 
 st.set_page_config(page_title="AutoModeler AI", layout="wide")
 st.title("AutoModeler AI 🤖")
