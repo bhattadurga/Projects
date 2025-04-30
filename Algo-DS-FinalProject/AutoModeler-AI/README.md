@@ -21,32 +21,9 @@ It supports dynamic model selection between regression and classification tasks,
 - **Model Persistence**: joblib
 
 **Design Diagram**
-           ┌────────────────────┐
-           │   🧑 User Uploads  │
-           │   CSV & Describes │
-           └────────┬──────────┘
-                    ↓
-         ┌────────────────────┐
-         │ Streamlit Frontend │   ← UI, data input, task chat, output display
-         └────────┬───────────┘
-                  ↓
-     JSON Payload via REST API (POST /train_model)
-                  ↓
-         ┌────────────────────┐
-         │  FastAPI Backend   │   ← API endpoints, request handling
-         └────────┬───────────┘
-                  ↓
-         ┌────────────────────┐
-         │    trainer.py      │   ← Feature engineering, model training (regression/classification)
-         └────────┬───────────┘
-                  ↓
-         ┌────────────────────┐
-         │     judge.py       │   ← Model evaluation logic (R², Accuracy, Adjusted R², p-values)
-         └────────┬───────────┘
-                  ↓
-         ┌────────────────────┐
-         │   Model (.pkl)     │   ← Saved model with joblib
-         └────────────────────┘
+
+<img width="763" alt="Screenshot 2025-04-30 at 7 09 41 PM" src="https://github.com/user-attachments/assets/6d04623b-ef7c-4051-8d73-a5467cc44bc1" />
+
 
 
 ## Installation
