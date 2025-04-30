@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from trainer import train, save_model
-from judge import evaluate_model  # ✅ make sure judge.py is imported
+from judge import evaluate_model
 
 app = FastAPI()
 
@@ -11,9 +11,9 @@ class TrainRequest(BaseModel):
     bin: bool | None = False
 
 @app.post("/train_model")
-def train_model(request: TrainRequest):
+def train_model_api(request: TrainRequest):
     try:
-        model, model_type, metrics, ols_summary = train(
+        model, model_type, metrics, ols_summary, y_true, y_pred = train(
             request.data,
             request.model_type,
             request.bin
@@ -23,17 +23,17 @@ def train_model(request: TrainRequest):
             "message": "Model trained successfully.",
             "model_type": model_type,
             "metrics": metrics,
-            "performance_summary": f"Model performed well with R² of {metrics.get('R2', 'N/A')}",
-            "ols_summary": ols_summary
+            "performance_summary": f"Model trained successfully",
+            "ols_summary": ols_summary,
+            "true_labels": y_true,
+            "predicted_labels": y_pred
         }
     except Exception as e:
         return {"error": str(e)}
 
-# ✅ ADD THIS NEW ROUTE BELOW
 @app.post("/judge")
 def judge_model(model_dict: dict):
     try:
-        result = evaluate_model(model_dict)
-        return result
+        return evaluate_model(model_dict)
     except Exception as e:
         return {"error": f"Judge failed: {str(e)}"}
