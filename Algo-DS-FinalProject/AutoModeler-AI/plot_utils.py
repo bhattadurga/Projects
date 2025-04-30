@@ -1,37 +1,23 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 def plot_feature_importance(df, column_name, title):
-    """
-    Plots feature importance or feature weights.
-    
-    Args:
-        df (pd.DataFrame): DataFrame with 'Feature' and 'Weight' or 'Importance' columns.
-        column_name (str): Column to plot (e.g., 'Weight' or 'Importance')
-        title (str): Title of the chart
-    """
     fig, ax = plt.subplots(figsize=(10, 6))
     sorted_df = df.sort_values(by=column_name, ascending=False)
 
-    # Plot bar chart
     sorted_df.plot(kind="bar", x="Feature", y=column_name, ax=ax, legend=False, color="skyblue")
-
-    # Set x and y ticks: Normal font (no bold)
-    plt.xticks(rotation=30, ha="right", fontsize=10, fontweight='normal')
-    plt.yticks(fontsize=10, fontweight='normal')
-
-    # Set axis labels and title: Bold
+    plt.xticks(rotation=30, ha="right", fontsize=10)
+    plt.yticks(fontsize=10)
     plt.xlabel("Feature", fontsize=12, fontweight='bold')
     plt.ylabel(column_name, fontsize=12, fontweight='bold')
     plt.title(title, fontsize=14, fontweight='bold')
 
-    # Find highest and lowest features
     highest_feature = sorted_df.iloc[0]
     lowest_feature = sorted_df.iloc[-1]
-
-    # Calculate padding
     y_padding_high = max(0.1 * abs(highest_feature[column_name]), 1)
 
-    # ✅ Move both annotations UPWARD above the bar
     ax.annotate(f"Highest: {highest_feature['Feature']}",
                 xy=(0, highest_feature[column_name]),
                 xytext=(0, highest_feature[column_name] + y_padding_high),
@@ -44,20 +30,11 @@ def plot_feature_importance(df, column_name, title):
                 arrowprops=dict(facecolor='red', shrink=0.05),
                 ha='center', fontsize=10, fontweight='bold')
 
-    # Add light gridlines
     plt.grid(axis='y', linestyle='--', alpha=0.7)
     plt.tight_layout()
-
     return fig
 
 def plot_logistic_coefficients(coef_df, title="Logistic Regression Coefficients"):
-    """
-    Plots logistic regression coefficients.
-    
-    Args:
-        coef_df (pd.DataFrame): DataFrame with 'Feature' and 'Weight' columns.
-        title (str): Title for the plot.
-    """
     fig, ax = plt.subplots(figsize=(10, 6))
     sorted_df = coef_df.sort_values(by="Weight", ascending=False)
 
@@ -73,6 +50,19 @@ def plot_logistic_coefficients(coef_df, title="Logistic Regression Coefficients"
                 f'{bar.get_width():.2f}',
                 va='center', ha='left' if bar.get_width() >= 0 else 'right',
                 fontsize=9, fontweight='bold')
+
+    plt.tight_layout()
+    return fig
+
+def plot_confusion_matrix_with_accuracy(y_true, y_pred):
+    acc = accuracy_score(y_true, y_pred) * 100
+    cm = confusion_matrix(y_true, y_pred)
+    fig, ax = plt.subplots(figsize=(6, 5))
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False, ax=ax)
+
+    ax.set_xlabel("Predicted", fontsize=12, fontweight='bold')
+    ax.set_ylabel("True", fontsize=12, fontweight='bold')
+    ax.set_title(f"Confusion Matrix (Accuracy = {acc:.1f}%)", fontsize=14, fontweight='bold')
 
     plt.tight_layout()
     return fig
