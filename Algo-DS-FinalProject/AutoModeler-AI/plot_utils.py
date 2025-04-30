@@ -49,3 +49,30 @@ def plot_feature_importance(df, column_name, title):
     plt.tight_layout()
 
     return fig
+
+def plot_logistic_coefficients(coef_df, title="Logistic Regression Coefficients"):
+    """
+    Plots logistic regression coefficients.
+    
+    Args:
+        coef_df (pd.DataFrame): DataFrame with 'Feature' and 'Weight' columns.
+        title (str): Title for the plot.
+    """
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sorted_df = coef_df.sort_values(by="Weight", ascending=False)
+
+    bars = ax.barh(sorted_df["Feature"], sorted_df["Weight"], color="skyblue")
+    ax.set_xlabel("Coefficient Weight", fontsize=12, fontweight="bold")
+    ax.set_title(title, fontsize=14, fontweight="bold")
+    ax.invert_yaxis()
+    ax.axvline(x=0, color="black", linewidth=0.8)
+    ax.grid(axis='x', linestyle='--', alpha=0.6)
+
+    for bar in bars:
+        ax.text(bar.get_width(), bar.get_y() + bar.get_height()/2,
+                f'{bar.get_width():.2f}',
+                va='center', ha='left' if bar.get_width() >= 0 else 'right',
+                fontsize=9, fontweight='bold')
+
+    plt.tight_layout()
+    return fig
