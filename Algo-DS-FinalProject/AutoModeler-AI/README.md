@@ -20,7 +20,7 @@ It supports dynamic model selection between regression and classification tasks,
 - **Visualization**: Matplotlib, Seaborn
 - **Model Persistence**: joblib
 
-**Design Diagram**
+## Design Diagram
 
 <img width="763" alt="Screenshot 2025-04-30 at 7 09 41 PM" src="https://github.com/user-attachments/assets/6d04623b-ef7c-4051-8d73-a5467cc44bc1" />
 
