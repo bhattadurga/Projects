@@ -1,7 +1,7 @@
 # AutoModeler AI 🤖
 
 ## Overview
-AutoModeler AI is an intelligent end-to-end chatbot application that guides users through uploading datasets, training machine learning models, evaluating them and building machine learning models based on their data and goals.It features a simple UI for CSV upload, task description, model building, feature importance visualization, and model download.
+AutoModeler AI is an intelligent end-to-end chatbot application that guides users through uploading datasets, training, evaluating and building machine learning models based on their data and goals.It features a simple UI for CSV upload, task description, model building, feature importance visualization, and model download.
 It supports dynamic model selection between regression and classification tasks, feature engineering, retraining, and judging model quality — all integrated into a seamless pipeline powered by Streamlit + FastAPI.
 
 ## Features
