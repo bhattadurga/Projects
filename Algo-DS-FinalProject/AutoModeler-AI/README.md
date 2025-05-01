@@ -117,11 +117,11 @@ def train_model(file: UploadFile, model_type: str):
     ...
 ```
 
-## AWS Deployment (Optional)
+## Backend API
 You can deploy the FastAPI backend using:
 - Frameworks: serverless, zappa
 - Cloud Tools: AWS Lambda, API Gateway, boto3
-- Testing Tools: Postman, cURL for verifying endpoints
+- Testing Tools: Postman, cURL for verifying endpoints - I used the testing via Postman
 
 ## Troubleshooting
 - Streamlit fails to load:
