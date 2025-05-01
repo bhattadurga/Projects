@@ -101,7 +101,7 @@ AutoModeler-AI/
 
 ## API and AI Integration
 
-- **POST /train_model**: Train and return metrics.
+- **POST /train_model**: Train model and return metrics.
 
 - **POST /judge**: Evaluate model and return scoring.
 
